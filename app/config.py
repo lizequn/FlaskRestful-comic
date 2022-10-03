@@ -10,6 +10,7 @@ BASEDIR = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
 SECURITY_FILE = os.path.join(BASEDIR, 'security.json')
 POETRY_CONFIG_FILE = os.path.join(BASEDIR, 'pyproject.toml')
 FILE_FOLDER = os.path.join(BASEDIR, 'files')
+MODEL_FOLDER = os.path.join(BASEDIR, 'model')
 
 
 def create_sqlite_uri(db_name):
@@ -25,6 +26,8 @@ def create_sqlite_uri(db_name):
 class Config(object):
     if not os.path.exists(FILE_FOLDER):
         os.makedirs(FILE_FOLDER)
+    if not os.path.exists(MODEL_FOLDER):
+        os.makedirs(MODEL_FOLDER)
     with open(SECURITY_FILE) as security:
         security_config = json.load(security)
     SECRET_KEY = security_config.get("SECRET_KEY")

@@ -12,3 +12,5 @@ class Comic(Base, BaseModel):
     comic_structure = Column(String(255))
     comic_script = Column(String(255))
     group = Column(Integer())
+    recomm_result = Column(String(255))
+    version = Column(String(255))
