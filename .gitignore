@@ -120,5 +120,3 @@ dmypy.json
 security.json
 
 *.csv
-*.png
-*.PNG
