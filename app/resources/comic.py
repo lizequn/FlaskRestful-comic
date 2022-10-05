@@ -22,7 +22,7 @@ class ComicResources(MethodView):
     }
 
     def post(self):
-        data = parser.parse(self.request_fields, request,location='form')
+        data = parser.parse(self.request_fields, request)
         logging.debug(f'Comic recommendation:{data}')
         logging.debug(f'request: {request.environ["REMOTE_ADDR"]}')
         data['comic_name'] = data.get('comic_name', str(uuid4()))
