@@ -15,14 +15,15 @@ Comic endpoint
 
 class ComicResources(MethodView):
     request_fields = {
-        'comic_name': fields.Str(required=False),
+        'comic_name': fields.Str(required=True),
         'comic_structure': fields.Str(required=True),
         'comic_script': fields.Str(required=True),
         'group': fields.Str(required=False)
     }
 
     def post(self):
-        data = parser.parse(self.request_fields, request)
+        logging.debug(request.data)
+        data = parser.parse(self.request_fields, request, location="json_or_form")
         logging.debug(f'Comic recommendation:{data}')
         logging.debug(f'request: {request.environ["REMOTE_ADDR"]}')
         data['comic_name'] = data.get('comic_name', str(uuid4()))

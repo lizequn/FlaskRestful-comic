@@ -759,17 +759,19 @@ function build_structure_string(structure_array){
 }
 
 async function get_recommendation(text,structure){
-    let url = "http://127.0.0.1:5000/comic"
+    let url = "http://128.199.57.220/comic"
+    // let url = "http://127.0.0.1:5000/comic";
     const response = await fetch(url,{
         method:"POST",
+        // mode:"no-cors",
         headers:{
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body:JSON.stringify({
-            "comic_name":"test",
-            "comic_structure":structure,
-            "comic_script":text
+            comic_name: "test",
+            comic_structure: structure,
+            comic_script: text
         })
     });
     return response.json();
