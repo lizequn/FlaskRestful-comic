@@ -6,7 +6,7 @@ from app import db
 class Comic(db.Model, BaseModel):
     __tablename__ = 'comic'
     id = Column(Integer(), primary_key=True,autoincrement=True)
-    comic_name = Column(String(255), unique=True)
+    comic_name = Column(String(255))
     comic_structure = Column(String(255))
     comic_script = Column(String(255))
     group = Column(Integer())

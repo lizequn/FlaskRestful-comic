@@ -1,17 +1,19 @@
+import logging
 import datetime
 from sqlalchemy import Column, DateTime
 from .. import db
 
 
 class BaseModel:
-
-    created_date = Column(DateTime,default=datetime.datetime.utcnow)
+    created_date = Column(DateTime, default=datetime.datetime.utcnow)
     updated_date = Column(DateTime, default=datetime.datetime.utcnow)
+
     def __commit(self):
         from sqlalchemy.exc import IntegrityError
         try:
             db.session.commit()
         except IntegrityError:
+            logging.debug('IntegrityError')
             db.session.rollback()
 
     def delete(self):
